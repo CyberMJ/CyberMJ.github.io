@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monte Sunday — Senior IT & Security Professional</title>
+<meta name="description" content="Monte Sunday — Senior IT and Security Professional. 15+ years of infrastructure, cloud security, and automation experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:       #0F1E35;
+    --navy-mid:   #162844;
+    --navy-light: #1E3A5F;
+    --blue:       #3B82F6;
+    --blue-dim:   #2563EB;
+    --blue-glow:  rgba(59,130,246,0.12);
+    --steel:      #94A3B8;
+    --white:      #F8F9FA;
+    --white-dim:  #CBD5E1;
+    --green:      #10B981;
+    --amber:      #F59E0B;
+    --card-bg:    rgba(30,58,95,0.35);
+    --border:     rgba(59,130,246,0.18);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(15,30,53,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 1.1rem;
+    color: var(--white); letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--blue); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--steel); text-decoration: none;
+    font-size: 0.875rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--blue); color: var(--white);
+    padding: 0.5rem 1.25rem; border-radius: 6px;
+    text-decoration: none; font-size: 0.875rem; font-weight: 600;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--blue-dim); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 2rem 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .hero-glow {
+    position: absolute; top: 20%; right: 10%;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(59,130,246,0.07), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { max-width: 1100px; margin: 0 auto; position: relative; }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem; color: var(--blue);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 32px; height: 1px; background: var(--blue);
+  }
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(3rem, 6.5vw, 5.5rem);
+    font-weight: 700; line-height: 1.04;
+    letter-spacing: -0.03em; margin-bottom: 1.5rem;
+  }
+  .hero h1 .tagline {
+    color: var(--blue); display: block;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 500; margin-top: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .terminal-line {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    color: var(--steel); margin-bottom: 2.5rem;
+    min-height: 1.8rem;
+  }
+  .terminal-line .prompt { color: var(--green); margin-right: 0.5rem; }
+  .cursor {
+    display: inline-block; width: 2px; height: 1em;
+    background: var(--blue); vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .hero-desc {
+    font-size: 1.05rem; color: var(--steel);
+    max-width: 560px; line-height: 1.75; margin-bottom: 2.75rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
+  .btn-primary {
+    background: var(--blue); color: var(--white);
+    padding: 0.875rem 2rem; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 0.925rem;
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary:hover { background: var(--blue-dim); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59,130,246,0.28); }
+  .btn-secondary {
+    border: 1px solid var(--border); color: var(--white-dim);
+    padding: 0.875rem 2rem; border-radius: 8px;
+    text-decoration: none; font-weight: 500; font-size: 0.925rem;
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-secondary:hover { border-color: var(--blue); color: var(--white); background: var(--blue-glow); }
+  .hero-stats {
+    display: flex; gap: 3rem; flex-wrap: wrap;
+    padding-top: 3rem; border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.25rem; font-weight: 700;
+    color: var(--white); line-height: 1;
+  }
+  .stat-num span { color: var(--blue); }
+  .stat-label {
+    font-size: 0.75rem; color: var(--steel);
+    margin-top: 0.3rem; letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; color: var(--blue);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-label::before { content:''; display:block; width:22px; height:1px; background:var(--blue); }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+    font-weight: 700; letter-spacing: -0.025em;
+    color: var(--white); margin-bottom: 0.9rem;
+  }
+  .section-sub {
+    color: var(--steel); font-size: 1rem;
+    max-width: 540px; line-height: 1.75;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--navy-mid); }
+  .about-grid {
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    gap: 4.5rem; align-items: start;
+  }
+  .about-text p {
+    color: var(--steel); line-height: 1.85;
+    margin-bottom: 1.2rem; font-size: 0.975rem;
+  }
+  .about-text p strong { color: var(--white); font-weight: 600; }
+  .about-cards { display: flex; flex-direction: column; gap: 0.875rem; }
+  .about-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.1rem 1.35rem;
+    display: flex; align-items: flex-start; gap: 0.875rem;
+    transition: border-color 0.2s;
+  }
+  .about-card:hover { border-color: var(--blue); }
+  .about-card-icon {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: var(--blue-glow); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .about-card-title {
+    font-weight: 600; font-size: 0.85rem;
+    color: var(--white); margin-bottom: 0.2rem;
+  }
+  .about-card-text { font-size: 0.775rem; color: var(--steel); line-height: 1.5; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--navy); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 1.25rem;
+  }
+  .skill-category {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.6rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-category:hover { border-color: var(--blue); transform: translateY(-2px); }
+  .skill-cat-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600; font-size: 0.875rem;
+    color: var(--white); margin-bottom: 1.1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .skill-cat-title .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%; background: var(--blue);
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .skill-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; padding: 0.28rem 0.65rem;
+    border-radius: 4px; border: 1px solid var(--border);
+    color: var(--steel); background: rgba(59,130,246,0.05);
+    transition: all 0.15s; cursor: default;
+  }
+  .skill-tag:hover { border-color: var(--blue); color: var(--white); background: var(--blue-glow); }
+  .skill-tag.hi { border-color: rgba(59,130,246,0.4); color: var(--blue); background: var(--blue-glow); }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--navy-mid); }
+  .timeline { position: relative; padding-left: 0; }
+  .timeline::before {
+    content: ''; position: absolute;
+    left: 0; top: 8px; bottom: 0; width: 1px;
+    background: linear-gradient(to bottom, var(--blue) 0%, rgba(59,130,246,0.1) 100%);
+  }
+  .timeline-item {
+    padding-left: 2.25rem; margin-bottom: 3rem;
+    position: relative;
+  }
+  .timeline-item:last-child { margin-bottom: 0; }
+  .timeline-dot {
+    position: absolute; left: -5px; top: 7px;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--blue); border: 2px solid var(--navy-mid);
+    box-shadow: 0 0 0 4px rgba(59,130,246,0.15);
+  }
+  .timeline-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; color: var(--blue);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+  .timeline-role {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--white); margin-bottom: 0.15rem;
+  }
+  .timeline-company {
+    font-size: 0.875rem; color: var(--steel);
+    margin-bottom: 0.875rem;
+  }
+  .timeline-bullets { list-style: none; }
+  .timeline-bullets li {
+    color: var(--steel); font-size: 0.875rem;
+    line-height: 1.65; padding-left: 1.1rem;
+    position: relative; margin-bottom: 0.35rem;
+  }
+  .timeline-bullets li::before {
+    content: '▸'; position: absolute;
+    left: 0; color: var(--blue);
+    font-size: 0.65rem; top: 0.35rem;
+  }
+  .timeline-bullets li strong { color: var(--white-dim); font-weight: 500; }
+
+  /* ── CERTIFICATIONS ── */
+  #certs { background: var(--navy); }
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .cert-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.2rem 1.4rem;
+    display: flex; align-items: center; gap: 1rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .cert-card:hover { border-color: var(--blue); transform: translateY(-1px); }
+  .cert-badge {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: var(--blue-glow); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .cert-name { font-weight: 600; font-size: 0.875rem; color: var(--white); margin-bottom: 0.2rem; }
+  .cert-issuer { font-size: 0.7rem; color: var(--steel); margin-bottom: 0.25rem; }
+  .cert-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.04em;
+  }
+  .cert-status.active    { color: var(--green); }
+  .cert-status.progress  { color: var(--amber); }
+  .cert-status.planned   { color: var(--steel); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--navy-mid); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: start;
+  }
+  .contact-left h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
+    font-weight: 700; letter-spacing: -0.025em;
+    color: var(--white); margin-bottom: 1rem;
+  }
+  .contact-left p {
+    color: var(--steel); line-height: 1.8;
+    font-size: 0.975rem; margin-bottom: 2rem;
+  }
+  .contact-email-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem; color: var(--blue);
+    text-decoration: none; display: inline-flex;
+    align-items: center; gap: 0.5rem;
+    transition: color 0.2s;
+    border-bottom: 1px solid rgba(59,130,246,0.3);
+    padding-bottom: 0.1rem;
+  }
+  .contact-email-link:hover { color: var(--white); border-color: var(--white); }
+  .contact-right { display: flex; flex-direction: column; gap: 0.875rem; }
+  .contact-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.1rem 1.35rem;
+    display: flex; align-items: center; gap: 1rem;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .contact-card:hover { border-color: var(--blue); transform: translateX(4px); background: var(--blue-glow); }
+  .contact-card-icon {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: var(--blue-glow); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .contact-card-label { font-weight: 600; font-size: 0.85rem; color: var(--white); }
+  .contact-card-sub { font-size: 0.75rem; color: var(--steel); margin-top: 0.1rem; }
+  .contact-card-arrow { margin-left: auto; color: var(--steel); font-size: 0.9rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 1.75rem 2rem; text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--steel); font-size: 0.775rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  footer span { color: var(--blue); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-stats { gap: 1.75rem; }
+    section { padding: 4rem 1.25rem; }
+    nav { padding: 1rem 1.25rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+    .cursor { animation: none; }
+    .availability::before { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Monte<span>.</span>Sunday</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certs">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Senior IT &amp; Security Professional — Remote</div>
+    <h1>
+      Monte Sunday
+      <span class="tagline">Senior IT &amp; Security Professional</span>
+    </h1>
+    <div class="terminal-line">
+      <span class="prompt">$</span>
+      <span id="typed-text"></span>
+      <span class="cursor"></span>
+    </div>
+    <p class="hero-desc">
+      15+ years securing and automating infrastructure — from sole sysadmin at a regulated financial institution to enterprise cloud security. I build systems that are resilient, compliant, and documented.
+    </p>
+    <div class="hero-actions">
+      <a href="#experience" class="btn-primary">View Experience →</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">15<span>+</span></div>
+        <div class="stat-label">Years in IT</div>
+      </div>
+      <div>
+        <div class="stat-num">S<span>1</span></div>
+        <div class="stat-label">SentinelOne — Implemented from Zero</div>
+      </div>
+      <div>
+        <div class="stat-num">AZ<span>-500</span></div>
+        <div class="stat-label">In Progress — Aug 2026</div>
+      </div>
+      <div>
+        <div class="stat-num">256</div>
+        <div class="stat-label">Endpoints &amp; Servers Secured</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">About</div>
+        <h2 class="section-title">The whole stack.<br>Solo when it counted.</h2>
+        <p>I spent years as part of a small IT team at <strong>Sauk Valley Bank</strong> — responsible for every layer of the technology stack in a regulated financial environment. Servers, networking, storage, security, compliance, automation. When something broke, I fixed it. When something needed building, I built it.</p>
+        <p>That experience shaped a way of thinking that hasn't left me: <strong>understand the full system, document everything, and treat security as operational discipline</strong> — not an afterthought.</p>
+        <p>Today I work as a Senior Technical Admin Specialist at Intact Insurance Specialty Solutions, managing on-premises infrastructure while extending my skills into cloud security. I'm currently completing the <strong>AZ-500 Microsoft Azure Security Engineer</strong> certification and building toward cloud security and OT security roles.</p>
+        <p>I bring banking-grade discipline to every environment I work in — whether that's a Fortune 500 cloud deployment or a small business that needs to know their M365 tenant isn't wide open.</p>
+      </div>
+      <div class="about-cards reveal reveal-delay-1">
+        <div class="about-card">
+          <div class="about-card-icon">🏦</div>
+          <div>
+            <div class="about-card-title">Regulated Environment Veteran</div>
+            <div class="about-card-text">Banking compliance, audit-ready documentation, change control under regulatory scrutiny. I know what it means when mistakes have real consequences.</div>
+          </div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">☁️</div>
+          <div>
+            <div class="about-card-title">Azure Cloud Security</div>
+            <div class="about-card-text">Production experience with Azure Arc, Key Vault, Entra ID, Conditional Access, PIM, and Identity Protection. Not just studied — actually deployed in a regulated environment.</div>
+          </div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">⚙️</div>
+          <div>
+            <div class="about-card-title">Automation First Mindset</div>
+            <div class="about-card-text">PowerShell and Terraform. I automate repetitive work so systems run consistently and humans focus on what matters.</div>
+          </div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🔒</div>
+          <div>
+            <div class="about-card-title">Security as Discipline</div>
+            <div class="about-card-text">Implemented SentinelOne EDR across 220 endpoints and 36 servers from ground up at a regulated financial institution. Full deployment, policy configuration, and ongoing management.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label reveal">Technical Skills</div>
+    <h2 class="section-title reveal">What I work with.</h2>
+    <p class="section-sub reveal">Deep roots in Windows infrastructure. Growing specialization in Azure cloud security. Automation throughout.</p>
+    <div class="skills-grid reveal">
+      <div class="skill-category">
+        <div class="skill-cat-title"><span class="dot"></span>Azure &amp; Cloud Security</div>
+        <div class="skill-tags">
+          <span class="skill-tag hi">Azure Arc</span>
+          <span class="skill-tag hi">Azure Key Vault</span>
+          <span class="skill-tag hi">Entra ID / Azure AD</span>
+          <span class="skill-tag hi">Conditional Access</span>
+          <span class="skill-tag hi">PIM</span>
+          <span class="skill-tag hi">Identity Protection</span>
+          <span class="skill-tag">Microsoft 365</span>
+          <span class="skill-tag">Defender for Cloud</span>
+          <span class="skill-tag">Microsoft Sentinel</span>
+          <span class="skill-tag">Azure Policy</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title"><span class="dot"></span>Infrastructure</div>
+        <div class="skill-tags">
+          <span class="skill-tag hi">Windows Server</span>
+          <span class="skill-tag hi">VMware vSphere</span>
+          <span class="skill-tag hi">Active Directory</span>
+          <span class="skill-tag">Hyper-V</span>
+          <span class="skill-tag">Storage Administration</span>
+          <span class="skill-tag">Networking</span>
+          <span class="skill-tag">Backup &amp; Recovery</span>
+          <span class="skill-tag">Patch Management</span>
+          <span class="skill-tag">DNS / DHCP</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title"><span class="dot"></span>Security Tools &amp; Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag hi">SentinelOne EDR</span>
+          <span class="skill-tag hi">Microsoft Intune</span>
+          <span class="skill-tag">Nessus</span>
+          <span class="skill-tag">Nmap</span>
+          <span class="skill-tag">Defender for Identity</span>
+          <span class="skill-tag">Defender for Endpoint</span>
+          <span class="skill-tag">Vulnerability Management</span>
+          <span class="skill-tag">SIEM</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title"><span class="dot"></span>Automation &amp; IaC</div>
+        <div class="skill-tags">
+          <span class="skill-tag hi">PowerShell</span>
+          <span class="skill-tag hi">Terraform</span>
+          <span class="skill-tag">Azure CLI</span>
+          <span class="skill-tag">Group Policy</span>
+          <span class="skill-tag">Scripting &amp; Automation</span>
+          <span class="skill-tag">Infrastructure as Code</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title"><span class="dot"></span>Compliance &amp; Governance</div>
+        <div class="skill-tags">
+          <span class="skill-tag hi">Financial Regulatory Compliance</span>
+          <span class="skill-tag hi">Change Management</span>
+          <span class="skill-tag">Risk Assessment</span>
+          <span class="skill-tag">Audit Documentation</span>
+          <span class="skill-tag">Incident Response</span>
+          <span class="skill-tag">HIPAA Awareness</span>
+          <span class="skill-tag">Security Policy</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title"><span class="dot"></span>Currently Building</div>
+        <div class="skill-tags">
+          <span class="skill-tag hi">AZ-500 — In Progress</span>
+          <span class="skill-tag">SC-200</span>
+          <span class="skill-tag">AWS Security</span>
+          <span class="skill-tag">GICSP</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">KQL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label reveal">Experience</div>
+    <h2 class="section-title reveal">Where I've been.</h2>
+    <p class="section-sub reveal">From sole sysadmin in a regulated financial institution to enterprise infrastructure and cloud security.</p>
+    <div class="timeline reveal">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">2024 — Present</div>
+        <div class="timeline-role">Senior Technical Admin Specialist</div>
+        <div class="timeline-company">Intact Insurance Specialty Solutions — Remote</div>
+        <ul class="timeline-bullets">
+          <li>Managing <strong>Windows Server infrastructure</strong> and on-premises systems in a hybrid environment undergoing cloud migration</li>
+          <li><strong>VMware vSphere</strong> administration and virtual infrastructure management across enterprise environment</li>
+          <li>PowerShell automation for patch management, operational workflows, and systems administration</li>
+          <li>Supporting workload migration to Azure cloud platform in collaboration with dedicated cloud team</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">Prior Role</div>
+        <div class="timeline-role">Bank Systems Administrator</div>
+        <div class="timeline-company">Sauk Valley Bank — Illinois</div>
+        <ul class="timeline-bullets">
+          <li>Part of a small IT team responsible for the <strong>full technology stack</strong> at a regulated community financial institution — servers, networking, storage, security, and compliance</li>
+          <li>Configured and implemented <strong>SentinelOne EDR</strong> across 220 endpoints and 36 servers from ground up — full policy configuration, tuning, and ongoing management</li>
+          <li>Deployed <strong>Microsoft Intune</strong> for mobile device management under strict banking compliance requirements</li>
+          <li>Implemented <strong>Azure Arc</strong> for hybrid patch management across on-premises and cloud environments</li>
+          <li>Configured <strong>Azure Key Vault</strong> for enterprise secrets and certificate management integrated with PowerShell automation workflows</li>
+          <li>Managed <strong>Entra ID, Conditional Access, PIM, and Identity Protection</strong> in full Microsoft 365 environment</li>
+          <li>Administered storage, networking, backup, and disaster recovery — maintained 100% uptime for critical banking systems</li>
+          <li>Full regulatory compliance ownership — change control documentation, audit preparation, risk management procedures</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="container">
+    <div class="section-label reveal">Certifications</div>
+    <h2 class="section-title reveal">Credentials &amp; roadmap.</h2>
+    <p class="section-sub reveal">Active certifications and the deliberate path I'm building toward senior cloud and OT security roles.</p>
+    <div class="certs-grid reveal">
+      <div class="cert-card">
+        <div class="cert-badge">⏳</div>
+        <div>
+          <div class="cert-name">AZ-500</div>
+          <div class="cert-issuer">Microsoft Azure Security Engineer</div>
+          <div class="cert-status progress">▶ In Progress — Aug 2026</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge">✅</div>
+        <div>
+          <div class="cert-name">Terraform Associate</div>
+          <div class="cert-issuer">HashiCorp</div>
+          <div class="cert-status active">● Previously Certified</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge">🎯</div>
+        <div>
+          <div class="cert-name">SC-200</div>
+          <div class="cert-issuer">Microsoft Security Operations Analyst</div>
+          <div class="cert-status planned">○ Planned — Late 2026</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge">🎯</div>
+        <div>
+          <div class="cert-name">AWS Security Specialty</div>
+          <div class="cert-issuer">Amazon Web Services</div>
+          <div class="cert-status planned">○ Planned — 2027</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge">🎯</div>
+        <div>
+          <div class="cert-name">GICSP</div>
+          <div class="cert-issuer">Global Industrial Cyber Security Professional</div>
+          <div class="cert-status planned">○ Planned — 2027</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-label">Contact</div>
+        <h2 class="contact-left" style="font-family:'Space Grotesk',sans-serif; font-size:clamp(1.75rem,3vw,2.4rem); font-weight:700; letter-spacing:-0.025em; color:var(--white); margin-bottom:1rem;">Get in touch.</h2>
+        <p style="color:var(--steel); line-height:1.8; font-size:0.975rem; margin-bottom:2rem;">Whether you're a business looking for security guidance, a fellow practitioner wanting to connect, or just have a question — feel free to reach out directly.</p>
+        <a href="mailto:contact@montesunday.com" class="contact-email-link">
+          contact@montesunday.com →
+        </a>
+      </div>
+      <div class="contact-right reveal reveal-delay-1">
+        <a href="https://www.linkedin.com/in/montesunday/" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--blue)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <div>
+            <div class="contact-card-label">LinkedIn</div>
+            <div class="contact-card-sub">linkedin.com/in/montesunday</div>
+          </div>
+          <div class="contact-card-arrow">→</div>
+        </a>
+        <a href="https://github.com/CyberMJ" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--blue)"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </div>
+          <div>
+            <div class="contact-card-label">GitHub</div>
+            <div class="contact-card-sub">github.com/CyberMJ</div>
+          </div>
+          <div class="contact-card-arrow">→</div>
+        </a>
+        <a href="mailto:contact@montesunday.com" class="contact-card">
+          <div class="contact-card-icon">✉</div>
+          <div>
+            <div class="contact-card-label">Email</div>
+            <div class="contact-card-sub">contact@montesunday.com</div>
+          </div>
+          <div class="contact-card-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>Monte Sunday</span> — montesunday.com</p>
+</footer>
+
+<script>
+  // Typing animation
+  const phrases = [
+    'securing Azure environments',
+    'automating with PowerShell',
+    'hardening M365 tenants',
+    'studying AZ-500',
+    'protecting regulated infrastructure',
+    'building with Terraform',
+    'defending endpoints with SentinelOne',
+  ];
+  let pi = 0, ci = 0, del = false;
+  const el = document.getElementById('typed-text');
+  function type() {
+    const p = phrases[pi];
+    if (!del) {
+      el.textContent = p.slice(0, ci + 1);
+      ci++;
+      if (ci === p.length) { del = true; setTimeout(type, 2200); return; }
+    } else {
+      el.textContent = p.slice(0, ci - 1);
+      ci--;
+      if (ci === 0) { del = false; pi = (pi + 1) % phrases.length; }
+    }
+    setTimeout(type, del ? 38 : 68);
+  }
+  type();
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
