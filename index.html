@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'">
 <title>Monte Sunday — Senior IT & Security Professional</title>
-<meta name="description" content="Monte Sunday — Senior IT and Security Professional. 10+ years of infrastructure, cloud security, and automation experience.">
+<meta name="description" content="Monte Sunday — Senior IT and Security Professional. 11+ years of infrastructure, cloud security, and automation experience.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -158,7 +163,6 @@
     margin-top: 0.3rem; letter-spacing: 0.06em;
     text-transform: uppercase;
   }
-
 
   /* ── SECTIONS ── */
   section { padding: 6rem 2rem; }
@@ -400,7 +404,6 @@
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; }
     .cursor { animation: none; }
-    .availability::before { animation: none; }
   }
 </style>
 </head>
@@ -435,7 +438,7 @@
       <span class="cursor"></span>
     </div>
     <p class="hero-desc">
-      10+ years securing and automating infrastructure — from sole sysadmin at a regulated financial institution to enterprise cloud security. I build systems that are resilient, compliant, and documented.
+      11+ years securing and automating infrastructure — from regulated financial services to enterprise cloud security. I build systems that are resilient, compliant, and documented.
     </p>
     <div class="hero-actions">
       <a href="#experience" class="btn-primary">View Experience →</a>
@@ -443,7 +446,7 @@
     </div>
     <div class="hero-stats">
       <div>
-        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-num">11<span>+</span></div>
         <div class="stat-label">Years in IT</div>
       </div>
       <div>
@@ -468,10 +471,10 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <div class="section-label">About</div>
-        <h2 class="section-title">The whole stack.<br>Solo when it counted.</h2>
+        <h2 class="section-title">The whole stack.<br>Built to last.</h2>
         <p>I spent years as part of a small IT team at <strong>Sauk Valley Bank</strong> — responsible for every layer of the technology stack in a regulated financial environment. Servers, networking, storage, security, compliance, automation. When something broke, I fixed it. When something needed building, I built it.</p>
         <p>That experience shaped a way of thinking that hasn't left me: <strong>understand the full system, document everything, and treat security as operational discipline</strong> — not an afterthought.</p>
-        <p>Today I work as a Senior Technical Admin Specialist at Intact Insurance Specialty Solutions, managing on-premises infrastructure while extending my skills into cloud security. I'm currently completing the <strong>AZ-500 Microsoft Azure Security Engineer</strong> certification and building toward cloud security and OT security roles.</p>
+        <p>Today I work as a Senior Technical Admin Specialist at Intact Insurance Specialty Solutions, managing on-premises infrastructure while extending my skills into cloud security. I'm currently completing the <strong>AZ-500 Microsoft Azure Security Engineer</strong> certification and building toward cloud security roles.</p>
         <p>I bring banking-grade discipline to every environment I work in — whether that's a Fortune 500 cloud deployment or a small business that needs to know their M365 tenant isn't wide open.</p>
       </div>
       <div class="about-cards reveal reveal-delay-1">
@@ -600,7 +603,7 @@
   <div class="container">
     <div class="section-label reveal">Experience</div>
     <h2 class="section-title reveal">Where I've been.</h2>
-    <p class="section-sub reveal">From sole sysadmin in a regulated financial institution to enterprise infrastructure and cloud security.</p>
+    <p class="section-sub reveal">From regulated financial services infrastructure to enterprise cloud and security work.</p>
     <div class="timeline reveal">
 
       <div class="timeline-item">
@@ -642,7 +645,7 @@
   <div class="container">
     <div class="section-label reveal">Certifications</div>
     <h2 class="section-title reveal">Credentials &amp; roadmap.</h2>
-    <p class="section-sub reveal">Active certifications and the deliberate path I'm building toward senior cloud and OT security roles.</p>
+    <p class="section-sub reveal">Active certifications and the deliberate path I'm building toward senior cloud security roles.</p>
     <div class="certs-grid reveal">
       <div class="cert-card">
         <div class="cert-badge">⏳</div>
@@ -739,7 +742,6 @@
 </footer>
 
 <script>
-  // Typing animation
   const phrases = [
     'securing Azure environments',
     'automating with PowerShell',
@@ -766,7 +768,6 @@
   }
   type();
 
-  // Scroll reveal
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
